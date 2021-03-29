@@ -1,0 +1,7 @@
+{
+  "AMSConfigurationOptions": {
+    "LocalAMSNetID": "192.168.1.11.1.1",
+    "TargetAMSNetID": "192.168.1.10.1.1",
+    "TargetIPAddress": "192.168.1.10"
+  }
+}
