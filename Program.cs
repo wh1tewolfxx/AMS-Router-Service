@@ -42,8 +42,8 @@ namespace TwinCAT.Ads.AdsRouterService
 
 
 
-                    
-                    
+
+
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
@@ -51,7 +51,7 @@ namespace TwinCAT.Ads.AdsRouterService
                     services.AddOptions();
                     var _settings = hostContext.Configuration.GetSection("AMSConfigurationOptions");
                     services.Configure<AMSConfigurationOptions>(_settings);
-                    
+
 
                 })
                 .ConfigureLogging(logging =>
@@ -77,8 +77,8 @@ public class RouterWorker : BackgroundService
 {
     private readonly ILogger<RouterWorker> _logger;
     private readonly IOptions<AMSConfigurationOptions> _settings;
-    
-    
+
+
 
     public RouterWorker(ILogger<RouterWorker> logger, IOptions<AMSConfigurationOptions> settings)
     {
@@ -90,7 +90,7 @@ public class RouterWorker : BackgroundService
     {
         try
         {
-            
+
 
             String LocalAMSNetID = _settings.Value.LocalAMSNetID;
             String TargetAMSNetID = _settings.Value.TargetAMSNetID;
@@ -101,24 +101,20 @@ public class RouterWorker : BackgroundService
 
             //Use this overload to instantiate a Router without support of StaticRoutes.xml and parametrize by code
             AmsTcpIpRouter router = new AmsTcpIpRouter(AmsNetId.Parse(LocalAMSNetID));
-            router.RouterStatusChanged += Router_RouterStatusChanged;         
-
+            router.RouterStatusChanged += Router_RouterStatusChanged;
 
             Route route = new Route("Target", new AmsNetId(TargetAMSNetID), TargetIPAddress);
             _logger.LogInformation("Route Resolved?: {0}", route.IsResolved);
 
             router.AddRoute(route);
-            
-            
 
             await router.StartAsync(cancel); // Start the router
-            
-        } catch (Exception ex)
+
+        }
+        catch (Exception ex)
         {
             _logger.LogError(ex.Message);
         }
-        
-        
     }
 
     private void Router_RouterStatusChanged(object sender, RouterStatusChangedEventArgs e)
