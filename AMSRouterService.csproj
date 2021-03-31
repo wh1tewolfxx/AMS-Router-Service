@@ -13,11 +13,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Beckhoff.TwinCAT.Ads.TcpRouter" Version="5.0.297" />
+    <PackageReference Include="Beckhoff.TwinCAT.Ads.Server" Version="5.0.327" />
+    <PackageReference Include="Beckhoff.TwinCAT.Ads.TcpRouter" Version="5.0.327" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="C:\Users\dman1\.nuget\packages\beckhoff.twincat.ads.tcprouter\5.0.327\contentFiles\any\netcoreapp3.1\StaticRoutes.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
