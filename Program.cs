@@ -95,16 +95,17 @@ public class RouterWorker : BackgroundService
             String LocalAMSNetID = _settings.Value.LocalAMSNetID;
             String TargetAMSNetID = _settings.Value.TargetAMSNetID;
             String TargetIPAddress = _settings.Value.TargetIPAddress;
-            _logger.LogInformation("Local AMS Net ID: {0}", LocalAMSNetID);
-            _logger.LogInformation("Target AMS Net ID: {0}", TargetAMSNetID);
-            _logger.LogInformation("Target IP Address: {0}", TargetIPAddress);
+            //_logger.LogInformation("Local AMS Net ID: {0}", LocalAMSNetID);
+            //_logger.LogInformation("Target AMS Net ID: {0}", TargetAMSNetID);
+            //_logger.LogInformation("Target IP Address: {0}", TargetIPAddress);
 
             //Use this overload to instantiate a Router without support of StaticRoutes.xml and parametrize by code
-            AmsTcpIpRouter router = new AmsTcpIpRouter(AmsNetId.Parse(LocalAMSNetID));
+            AmsTcpIpRouter router = new AmsTcpIpRouter(new AmsNetId(LocalAMSNetID),AmsTcpIpRouter.DEFAULT_TCP_PORT,System.Net.IPAddress.Loopback, AmsTcpIpRouter.DEFAULT_TCP_PORT, _logger);
             router.RouterStatusChanged += Router_RouterStatusChanged;
 
             Route route = new Route("Target", new AmsNetId(TargetAMSNetID), TargetIPAddress);
-            _logger.LogInformation("Route Resolved?: {0}", route.IsResolved);
+            //_logger.LogInformation("Route Resolved?: {0}", route.IsResolved);
+            
 
             router.AddRoute(route);
 

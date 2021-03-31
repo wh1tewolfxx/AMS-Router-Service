@@ -6,6 +6,7 @@
     <AssemblyName>ADSRouterService</AssemblyName>
     <RootNamespace>ADSRouterService</RootNamespace>
     <StartupObject>TwinCAT.Ads.AdsRouterService.Program</StartupObject>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
